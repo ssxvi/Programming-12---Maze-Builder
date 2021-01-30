@@ -26,6 +26,10 @@ public class Maze implements MouseListener{
     int row;
     int column;
 
+    ArrayList[][] tableArray = new ArrayList[10][10];
+
+
+
 
 
     public Maze(){
@@ -43,7 +47,6 @@ public class Maze implements MouseListener{
         table.setRowHeight(55);
         table.setEnabled(false);
         table.addMouseListener(this);
-
 
         panel.add(table);
 
@@ -72,9 +75,6 @@ public class Maze implements MouseListener{
 
           System.out.println(row + ", " + column);
           System.out.println();
-
-
-          table.getCellEditor();
 
 
 
@@ -111,29 +111,6 @@ public class Maze implements MouseListener{
            return false;
         }
     };
-
-}
     */
 }
-
-public class StatusColumnCellRenderer extends DefaultTableCellRenderer {
-    @Override
-
-    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int col) {
-  
-      //Cells are by default rendered as a JLabel.
-      JLabel l = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, col);
-  
-      //Get the status for the current row.
-      CustomTableModel tableModel = (CustomTableModel) table.getModel();
-      if (tableModel.getStatus(row) == CustomTableModel.APPROVED) {
-        l.setBackground(Color.GREEN);
-      } else {
-        l.setBackground(Color.RED);
-      }
-  
-    //Return the JLabel which renders the cell.
-    return l;
-  
-  }
 
