@@ -9,11 +9,13 @@
 import java.util.ArrayList;
 
 import javax.swing.*;
-
-import java.awt.*;
+import javax.swing.table.*;
 import java.awt.event.*;
+import java.awt.*;
+
 import java.awt.GridBagConstraints;  
 import java.awt.GridBagLayout;
+
 
 
 
@@ -22,11 +24,15 @@ public class Maze implements MouseListener{
     JPanel panel;
     JLabel label0;
     JTable table;
+    DefaultTableModel model;
 
-    int row;
-    int column;
 
-    ArrayList[][] tableArray = new ArrayList[10][10];
+    public int row;
+    public int column;
+
+
+    mazeObject[][] mazeList;
+
 
 
 
@@ -36,53 +42,92 @@ public class Maze implements MouseListener{
         frame = new JFrame("help");
         panel = new JPanel();
         table = new JTable(10, 10);
+        model = new DefaultTableModel(10, 10);
+        label0 = new JLabel("wall");
+
+        mazeList = generateMaze(10, 10, mazeList);
+
+    
+
 
 
         frame.add(panel);
 
 
+        
 
 
         table.setCellSelectionEnabled(false);
-        table.setRowHeight(55);
+        table.setRowHeight(40);
         table.setEnabled(false);
         table.addMouseListener(this);
-
+        
         panel.add(table);
 
 
 
 
-        frame.pack();
+        frame.pack();   
         frame.setVisible(true);
     }
 
+    public static mazeObject[][] generateMaze(int maxHeight, int maxWidth, mazeObject[][] list){
+
+       list = new mazeObject[maxWidth][maxHeight];
+
+
+        for (int h = 0; h < maxHeight; h++){
+
+            for (int w = 0; w < maxWidth; w++){
+    
+                list[w][h] = new mazeObject(w, h, false);
+    
+    
+            }
+        }
+
+        return list;
+    
+    }
 
     public static void main(String args[]){
 
+        
         new Maze();
 
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
+
+
+        JTable target = (JTable)e.getSource();
+        row = target.rowAtPoint(e.getPoint());
+        column = target.columnAtPoint(e.getPoint());
+
+        System.out.println(row + ", " + column);
+        System.out.println();
+
         
-        if (e.getClickCount() == 2) {
+        if (model.getValueAt(row, column) == null){
 
-          JTable target = (JTable)e.getSource();
-          row = target.rowAtPoint(e.getPoint());
-          column = target.columnAtPoint(e.getPoint());
+            model.setValueAt("black", row, column);
+            mazeList[row][column].wall = true;
 
-          System.out.println(row + ", " + column);
-          System.out.println();
+        } else {
 
+            model.setValueAt(null, row, column);
 
-
+            mazeList[row][column].wall = false;
+            
         }
 
 
+        table.getColumnModel().getColumn(column).setCellRenderer(new CellRenderer());
 
-    }  
+        table.repaint();
+        table.setModel(model);
+    }   
 
     public void mouseEntered(MouseEvent e) {
 
@@ -112,5 +157,5 @@ public class Maze implements MouseListener{
         }
     };
     */
-}
 
+}
