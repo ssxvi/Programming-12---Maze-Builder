@@ -22,6 +22,9 @@ Initially, the goal of the program was for the user to create a maze, and solve 
 However, this project was cut short due to time limitations and underestimating the difficulty to understand/edit JFrame's rendering system.
 If i were to redo this project and not have 4x speed due dates from Covid-19, I would ~~use angular or react.js and not stupid jAVA and JFRAME~~ spend more time on algorithm development, and improve the graphics above the bare minimum.
 
-- Trevor [reviewing old code summer 2022]
+
+\- Trevor [reviewing old code summer 2022]
+
+---
 
 #### NOTE - Idk why this happens but when VSCode tries to automatically run the program, it calls javac maze.java && java maze instead of javac Maze.java $$ java Maze, just a heads up
