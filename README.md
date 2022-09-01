@@ -1,5 +1,6 @@
 # Programming-12---Final-Project
 
+![maze](https://media.discordapp.net/attachments/646955937000849410/1014808266175422465/unknown.png)
 
 # MAZE PROJECT
 
