@@ -6,9 +6,9 @@
 
 #### Description
 
-The program allows a user to construct a maze within a grid, and solve it by hand, limiting the solution to adjacent 'solution squares'
+The program allows a user to construct a maze within a grid, and solve it by hand, limiting the solution to adjacent 'solution squares'.
 
-This project was done to demonstrate proficiency over many basic concepts in my Programming 12 Java Course as well as 
+This project was done to demonstrate proficiency over many basic concepts in my Programming 12 Java Course as well as:
 - JFrame's GridBagLayout
 - Overriding segments of Imported Library methods (JFrame's rendering method for table squares)
 - Object construction 
